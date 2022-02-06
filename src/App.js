@@ -31,7 +31,7 @@ const App = () => {
   },
 
   tooltip: {
-      pointFormat: '<b>${point.y:,.2f}</b> USD'
+      pointFormat: '<b>{point.title:,} <br/>${point.y:,.2f}</b> USD'
   },
   dataLabel:{
     enabled:true
@@ -42,11 +42,11 @@ const App = () => {
       color: Highcharts.getOptions().colors[3],
       data: [{
           title: 'Uncommited',
-          name: 'Start',
+          name: 'Trx. Exposure',
           y: 120000,
       }, {
           title: 'Commited',
-          name: 'Start',
+          name: 'Trx. Exposure',
           y: 569000,
           color: Highcharts.getOptions().colors[3],
 
@@ -58,32 +58,12 @@ const App = () => {
           name: 'Positive Balance',
           isIntermediateSum: true,
           color: Highcharts.getOptions().colors[1]
-      }, {
-          name: 'New Revenue',
-          y: 500000
-      },{
-          name: 'New Revenue',
-          y: -100000
-      }, {
-          name: 'Second Intermediate',
-          isSum: true,
-          color: Highcharts.getOptions().colors[1]
-      }, {
-          name: 'Fixed Costs',
-          y: -342000
-      }, {
-          name: 'Variable Costs',
-          y: -233000
-      }, {
-          name: 'Balance',
-          isSum: true,
-          color: Highcharts.getOptions().colors[1]
       }],
       dataLabels: {
           enabled: true,
           formatter: function () {
               console.log(this);
-              return this.point.title+' '+Highcharts.numberFormat(this.y, 0, ',') + 'k';
+              return this.point.title+'<br/>'+Highcharts.numberFormat(this.y, 0, ',') + 'k';
           },
           style: {
               color: '#FFFFFF',
